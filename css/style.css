@@ -1,0 +1,238 @@
+/* Base Reset and Layout */
+* {
+  box-sizing: border-box; /* Prevents elements from stretching past screen width */
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f7f8;
+  color: #223333;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navigation Bar Fixes */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Vertically aligns logo and links */
+  padding: 14px 5%;
+  background: rgba(8, 39, 67, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 1000; /* Keeps nav above all other elements */
+}
+
+.logo img {
+  max-height: 45px;
+  width: auto;
+  display: block;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap; /* Allows menu to wrap on small screens, preventing cutoff */
+  justify-content: flex-end;
+}
+
+nav a {
+  color: #fff;
+  margin: 5px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+nav a:hover {
+  color: #c99a28; /* Highlight color on hover */
+}
+
+/* Hero Section Layout */
+.hero {
+  min-height: 100vh; /* Changed from 100vh to prevent content clipping */
+  /* Combines a soft white mask (85% opacity) and your neighborhood image */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                    url('https://www.lamudi.com.ph/journal/wp-content/uploads/2025/01/shutterstock_1282911289.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 5% 80px 5%; /* Top padding leaves space for fixed nav */
+}
+
+.overlay {
+  max-width: 800px;
+  position: relative;
+  z-index: 2;
+}
+
+.overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+  font-weight: 700;
+  color: #111111; /* Dark text for perfect readability on light background */
+}
+
+.overlay h2 {
+  font-size: 1.8rem;
+  color: #082743; /* Adjusted branding color to contrast nicely on light overlay */
+  margin-top: 0;
+  font-weight: 600;
+}
+
+.overlay p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #444444;
+}
+
+/* UI Elements */
+.btn {
+  background: #c99a28;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(201, 154, 40, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #b0851e;
+  transform: translateY(-2px);
+}
+
+/* Section Styling */
+section {
+  padding: 100px 5% 60px 5%; /* Added padding so internal anchor targets display perfectly */
+}
+
+h2 {
+  text-align: center;
+  color: #082743;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: #c99a28;
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* Grid & Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card, .panel {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  border: 1px solid #eaeaea;
+}
+
+.card h3 {
+  margin: 15px 0 5px 0;
+  color: #082743;
+}
+
+.avatar {
+  font-size: 40px;
+}
+
+/* Announcements Styling */
+.announcement-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.announcement-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 20px;
+}
+
+.announcement-list li::before {
+  content: '📢';
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+.announcement-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Two-column Layout (Facebook section) */
+.two {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 30px;
+  align-items: center;
+}
+
+.qr {
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  background: #fafafa;
+}
+
+/* Responsiveness adjustments */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 5%;
+  }
+
+  .links {
+    justify-content: center;
+  }
+
+  .two {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 180px; /* Gives extra space for the stacked logo/menu on mobile */
+  }
+  
+  .overlay h1 {
+    font-size: 1.8rem;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  background: #082743;
+  color: #fff;
+  font-size: 14px;
+}
